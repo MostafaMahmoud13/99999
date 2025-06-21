@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360° Rotating Mop - Buy Sample</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buy-btn:hover {
+            background-color: #0f75d1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 25px;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .product-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .product-row img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .qty-control button {
+            font-size: 16px;
+            padding: 5px 10px;
+        }
+
+        .qty-control input {
+            width: 40px;
+            text-align: center;
+        }
+
+        .price-display {
+            font-size: 18px;
+            color: green;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .confirm-btn:hover {
+            background-color: #218838;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .thumbnail-row img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail-row img:hover {
+            border-color: #1e90ff;
+        }
+
+        .details {
+            padding: 10px 0;
+        }
+
+        .details strong {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .details p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .options {
+            margin: 20px 0;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select,
+        input[type=number] {
+            padding: 8px;
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #1e90ff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #0f75d1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        #mediaDisplay {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .unmute-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .thumbnails img,
+        .thumbnails video {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .unmute-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05);
+            transition: 0.3s ease;
+        }
+
+        .unmute-btn::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -28px;
+            right: 0;
+            background: black;
+            color: white;
+            padding: 5px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            display: none;
+        }
+
+        .unmute-btn:hover::after {
+            display: block;
+        }
+
+        .buy-btn {
+            ... transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+        }
+
+        .buy-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(30, 144, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="product-title"><strong>360° Rotating Flat Mop with Bucket</strong></div>
+        <div id="rating" style="margin-bottom: 10px;"></div>
+
+
+        <div id="mediaDisplay" style="margin-bottom: 20px;"></div>
+
+
+        <div class="thumbnail-row" id="thumbnails">
+
+            <video width="100" height="100"
+                onclick="changeVideo('https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794820/1_cyy5ux.mp4', true)"
+                style="cursor:pointer;" muted>
+                <source src="https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794820/1_cyy5ux.mp4"
+                    type="video/mp4">
+            </video>
+
+
+            <video width="100" height="100"
+                onclick="changeVideo('https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794718/4_chrl9x.mp4', true)"
+                style="cursor:pointer;" muted>
+                <source src="https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794718/4_chrl9x.mp4"
+                    type="video/mp4">
+            </video>
+
+
+            <video width="100" height="100"
+                onclick="changeVideo('https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794625/3_kgce4s.mp4', true)"
+                style="cursor:pointer;" muted>
+                <source src="https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794625/3_kgce4s.mp4"
+                    type="video/mp4">
+            </video>
+
+            <video width="100" height="100"
+                onclick="changeVideo('https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794755/2_hguzbt.mp4', true)"
+                style="cursor:pointer;" muted>
+                <source src="https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794755/2_hguzbt.mp4"
+                    type="video/mp4">
+            </video>
+
+            <!-- 12 صور مبدئية، ممكن تضيف أكتر بنفس النمط -->
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645218/26_1b23b2c7-ee03-44a0-b7e1-74be695b9db6_fyuih8.png"
+                onclick="changeImage(this.src)" alt="Thumb 1">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645204/14_9830c875-5f3f-4275-a1cb-5628b2b11ca0_trans_xmkmeg.png"
+                onclick="changeImage(this.src)" alt="Thumb 2">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645224/8_eb729875-5df9-4f0f-9e2b-1d23780666ed_trans_ru7f9u.png"
+                onclick="changeImage(this.src)" alt="Thumb 3">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645220/7_9efe723e-fa40-47ca-a71d-25062d4a46e4_trans_tu8nfx.png"
+                onclick="changeImage(this.src)" alt="Thumb 4">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645205/1_0431ebf3-341e-4dc8-bbc6-40370e8b78c0_plm1pa.png"
+                onclick="changeImage(this.src)" alt="Thumb 5">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645216/2_1926dbf6-0076-43dc-9db7-e8e615d44cd1_trans_aecaeo.png"
+                onclick="changeImage(this.src)" alt="Thumb 6">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645215/42_3d66fcf2-f86b-4ed2-bf52-34effe8db5bc_de5ruu.png"
+                onclick="changeImage(this.src)" alt="Thumb 7">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645215/41_99c138d0-0894-494f-b668-b353945797e0_b4kdtr.png"
+                onclick="changeImage(this.src)" alt="Thumb 8">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796176/4_sgz5pf.png"
+                onclick="changeImage(this.src)" alt="Thumb 9">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796192/5_p7jb5x.png"
+                onclick="changeImage(this.src)" alt="Thumb 10">
+            <img src="https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796180/6_wv41dv.png"
+                onclick="changeImage(this.src)" alt="Thumb 11">
+            <img src="111.jpg" onclick="changeImage(this.src)" alt="Thumb 12">
+
+        </div>
+
+        <div class="details">
+            <h3>360° Rotating Flat Mop with Bucket</h3>
+            <p>Clean Smarter, Not Harder.
+                The Professional-Grade Mop Trusted by Thousands.
+            </p>
+            <ul>
+                <li>🌀 360° Rotating Head – reaches every corner effortlessly</li>
+                <li>💦 High Water Absorption – deep clean with one swipe</li>
+                <li>🎉 Hands-Free Wringing – no touching dirty water</li>
+                <li>🥇 Compact & Foldable Bucket – easy to store anywhere</li>
+                <li>🌍 Safe on All Floors – wood, tile, laminate & more</li>
+                <li>🔧 Easy to Assemble – ready to use in minutes</li>
+                <li>✨ Minimalist Design – fits any modern home</li>
+                <li>📦 Includes Mop + Bucket Set – everything you need in one box</li>
+            </ul>
+        </div>
+
+        <div style="margin: 20px 0; text-align: center;">
+            <p style="font-weight: bold; color: #e53935;">
+                🔥 Hurry! Offer ends in <span id="countdown"></span>
+            </p>
+        </div>
+
+
+        <button class="buy-btn" onclick="openModal()">Buy Sample</button>
+    </div>
+    <div style="margin-top: 20px; padding: 15px; background: #e0f7fa; border-radius: 8px; text-align: center;">
+        ✅ 30-Day Money Back Guarantee | 🚚 Free Shipping Available!
+    </div>
+
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+
+            <div id="productList"></div>
+
+            <div class="price-display">Total: $<span id="totalPrice">0.00</span></div>
+
+
+            <button id="confirmBtn" class="buy-btn" onclick="confirmSelection()">Confirm & Continue</button>
+        </div>
+    </div>
+
+
+
+    <script>
+
+
+        function openModal() {
+            document.getElementById("productModal").style.display = "flex";
+            const productList = document.getElementById("productList");
+            productList.innerHTML = "";
+            products.forEach(product => {
+                const row = document.createElement("div");
+                row.className = "product-row";
+                row.innerHTML = `
+          <img src="${product.img}" alt="${product.name}">
+          <div class="product-info">
+            <div class="product-name">${product.name}</div>
+            <div class="product-price">
+  <strong style="color: #2e7d32;">$${product.price.toFixed(2)}</strong>
+  <del style="color: #999; font-size: 14px;">$${product.originalPrice.toFixed(2)}</del>
+</div>
+          </div>
+          <div class="qty-control">
+            <button onclick="changeQty(${product.id}, -1)">-</button>
+            <input type="text" id="qty-${product.id}" value="${product.qty}" readonly>
+            <button onclick="changeQty(${product.id}, 1)">+</button>
+          </div>
+        `;
+                productList.appendChild(row);
+            });
+            updateTotal();
+            document.getElementById("fixedTotal").style.display = "block";
+
+            document.getElementById("scrollToConfirm").style.display = "block";
+
+
+        }
+
+
+
+        function closeModal() {
+            document.getElementById("productModal").style.display = "none";
+            document.getElementById("fixedTotal").style.display = "none";
+            document.getElementById("scrollToConfirm").style.display = "none";
+
+
+        }
+
+        function changeQty(id, change) {
+            const product = products.find(p => p.id === id);
+            product.qty += change;
+            if (product.qty < 0) product.qty = 0;
+            document.getElementById(`qty-${id}`).value = product.qty;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let total = 0;
+            products.forEach(p => total += p.qty * p.price);
+            document.getElementById("totalPrice").innerText = total.toFixed(2);
+            document.getElementById("fixedTotalValue").innerText = total.toFixed(2);
+
+        }
+
+        function confirmSelection() {
+            const selectedProducts = products.filter(p => p.qty > 0);
+            localStorage.setItem("productList", JSON.stringify(selectedProducts));
+            window.location.href = "checkputProduct3.html";
+        }
+
+        // __define-ocg__
+        let varOcg = 0;
+
+        function changeImage(src) {
+            document.getElementById("mainImage").src = src;
+        }
+
+        function saveProduct() {
+            const quantity = parseInt(document.getElementById("quantity").value);
+            const color = document.getElementById("color").value;
+            varOcg = quantity;
+
+            const product = {
+                name: "360° Rotating Flat Mop",
+                color: color,
+                quantity: quantity,
+                price: 29.99
+            };
+
+            localStorage.setItem("product", JSON.stringify(product));
+            window.location.href = "checkputProduct3.html";
+        }
+
+        function changeVideo(videoSrc, autoMuted = false) {
+            const container = document.getElementById("mediaDisplay");
+            container.innerHTML = "";
+
+            const video = document.createElement("video");
+            video.src = videoSrc;
+            video.controls = true;
+            video.autoplay = true;
+            video.muted = autoMuted;
+            video.style.width = "100%";
+            video.style.maxHeight = "500px";
+            video.style.objectFit = "contain";
+            video.style.borderRadius = "10px";
+
+            // زر Unmute
+            const unmuteBtn = document.createElement("button");
+            unmuteBtn.className = "unmute-btn";
+            unmuteBtn.innerText = "🔊";
+            unmuteBtn.setAttribute("data-tooltip", "Unmute Video");
+            unmuteBtn.style.position = "absolute";
+            unmuteBtn.style.top = "10px";
+            unmuteBtn.style.right = "10px";
+            unmuteBtn.style.background = "rgba(0,0,0,0.6)";
+            unmuteBtn.style.color = "white";
+            unmuteBtn.style.border = "none";
+            unmuteBtn.style.padding = "8px 12px";
+            unmuteBtn.style.borderRadius = "4px";
+            unmuteBtn.style.cursor = "pointer";
+            unmuteBtn.style.zIndex = "10";
+
+            // زر Mute
+            const muteBtn = document.createElement("button");
+            muteBtn.className = "unmute-btn";
+            muteBtn.innerText = "🔇";
+            muteBtn.setAttribute("data-tooltip", "Mute Video");
+            muteBtn.style.position = "absolute";
+            muteBtn.style.top = "10px";
+            muteBtn.style.right = "10px";
+            muteBtn.style.background = "rgba(0,0,0,0.6)";
+            muteBtn.style.color = "white";
+            muteBtn.style.border = "none";
+            muteBtn.style.padding = "8px 12px";
+            muteBtn.style.borderRadius = "4px";
+            muteBtn.style.cursor = "pointer";
+            muteBtn.style.zIndex = "10";
+            muteBtn.style.display = "none"; // مخفي في البداية
+
+            // تفعيل الصوت
+            unmuteBtn.onclick = () => {
+                video.muted = false;
+                unmuteBtn.style.display = "none";
+                muteBtn.style.display = "block";
+            };
+
+            // كتم الصوت
+            muteBtn.onclick = () => {
+                video.muted = true;
+                muteBtn.style.display = "none";
+                unmuteBtn.style.display = "block";
+            };
+
+            container.style.position = "relative";
+            container.appendChild(video);
+            container.appendChild(unmuteBtn);
+            container.appendChild(muteBtn);
+        }
+
+
+        function changeImage(imgSrc) {
+            const container = document.getElementById("mediaDisplay");
+            const img = document.createElement("img");
+
+            img.src = imgSrc;
+            img.style.width = "100%";
+            img.style.maxHeight = "500px";
+            img.style.objectFit = "contain";
+            img.style.borderRadius = "10px";
+
+            container.innerHTML = "";
+            container.appendChild(img);
+        }
+
+
+        function randomRating() {
+            const ratingEl = document.getElementById("rating");
+
+            // نجوم من 4.7 إلى 5.0
+            const stars = (Math.random() * 0.3 + 4.7).toFixed(1);
+            const reviews = Math.floor(Math.random() * 3000 + 500); // من 500 إلى 3500
+
+            const fullStars = Math.floor(stars);
+            const halfStar = stars - fullStars >= 0.5;
+
+            let starsHTML = '';
+            for (let i = 0; i < fullStars; i++) starsHTML += '★';
+            if (halfStar) starsHTML += '½';
+
+            ratingEl.innerHTML = `<span style="font-size: 20px; color: #ffc107;">${starsHTML}</span>
+    <span style="font-size: 14px; color: #666;">(${stars}/5 based on ${reviews} reviews)</span>`;
+        }
+        randomRating();
+
+        function startCountdown(durationMinutes) {
+            const now = new Date().getTime();
+            const savedEnd = localStorage.getItem("countdown_end");
+
+            let end;
+            if (savedEnd) {
+                end = parseInt(savedEnd);
+            } else {
+                end = now + durationMinutes * 60 * 1000;
+                localStorage.setItem("countdown_end", end);
+            }
+
+            const countdown = document.getElementById("countdown");
+
+            const interval = setInterval(() => {
+                const current = new Date().getTime();
+                const distance = end - current;
+
+                if (distance <= 0) {
+                    // Reset countdown لمدة 15 دقيقة جديدة
+                    const newEnd = new Date().getTime() + durationMinutes * 60 * 1000;
+                    localStorage.setItem("countdown_end", newEnd);
+                    end = newEnd;
+                }
+
+
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdown.innerHTML = `${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+
+        startCountdown(15); // عد تنازلي 15 دقيقة
+
+
+        function scrollToConfirm() {
+            const interval = setInterval(() => {
+                const confirmBtn = document.getElementById("confirmBtn");
+                if (confirmBtn && confirmBtn.offsetParent !== null) {
+                    confirmBtn.scrollIntoView({ behavior: "smooth" });
+                    clearInterval(interval);
+                }
+            }, 100);
+        }
+
+
+
+
+
+        const products = [
+            {
+                id: 1,
+                name: "color : " + " (42x11cm replacement cloth)",
+                img: "111.jpg",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 2,
+                name: "color : " + " (42x11cm replacement cloth 3pcs)",
+                img: "222.jpg",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 3,
+                name: "color : " + " (42x11cm replacement cloth 6pcs)",
+                img: "333.jpg",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 4,
+                name: "color : " + " (42x11cm replacement cloth 10pcs)",
+                img: "444.jpg",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 5,
+                name: "color : " + " (Blue)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748645215/42_3d66fcf2-f86b-4ed2-bf52-34effe8db5bc_de5ruu.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 6,
+                name: "color : " + " (Blue Mop Bucket)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796176/4_sgz5pf.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 7,
+                name: "color : " + " (Blue With 2 Rags)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796192/5_p7jb5x.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 8,
+                name: "color : " + " (Blue With 2 Rags set)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796180/6_wv41dv.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 9,
+                name: "color : " + " (Blue With 4 Rags)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796197/7_o0mc5c.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 10,
+                name: "color : " + " (Blue With 4 Rags set)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796179/8_nsahf5.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 11,
+                name: "color : " + " (Blue With 6 Rags)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796194/9_zber3n.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 12,
+                name: "color : " + " (Blue With 6 Rags set)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796183/10_o91tna.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 13,
+                name: "color : " + " (White)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796197/11_gyuen0.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 14,
+                name: "color : " + " (White Mop Bucket)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796187/12_etdphk.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 15,
+                name: "color : " + " (White With 2 Rags)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796205/13_qwugjq.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 16,
+                name: "color : " + " (White With 4 Rags)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796204/14_qyoeo9.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 17,
+                name: "color : " + " (White With 6 Rags)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796206/15_dd9kpe.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+            {
+                id: 18,
+                name: "color : " + " (White With 2 Rags set)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796200/16_inhtsi.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            },
+
+            {
+                id: 19,
+                name: "color : " + " (White With 6 Rags set)",
+                img: "https://res.cloudinary.com/dbsumfbkh/image/upload/v1748796204/17_eevbmt.png",
+                qty: 0,
+                price: 25.00,           // السعر بعد الخصم (اللي بيتحسب عليه Total)
+                originalPrice: 35.00    // السعر القديم (للعرض فقط)
+            }
+        ];
+
+        window.onload = function () {
+            changeVideo("https://res.cloudinary.com/dbsumfbkh/video/upload/v1748794820/1_cyy5ux.mp4", true); // أول فيديو يشتغل تلقائيًا
+        };
+
+        document.getElementById("sampleArea").scrollIntoView({ behavior: "smooth" });
+
+
+
+        </script>
+
+
+ 
+
+    <div id="fixedTotal" style="
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 16px;
+    font-weight: bold;
+    color: #2e7d32;
+    z-index: 999;
+    display: none;
+  ">
+        Total: $<span id="fixedTotalValue">0.00</span>
+    </div>
+
+</body>
+
+</html>

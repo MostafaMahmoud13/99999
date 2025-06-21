@@ -632,12 +632,11 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
     body: JSON.stringify(data)
   });
 
-  if (response.ok) {
-    alert("✅ Order sent successfully!");
-    window.location.href = "thankyou-index.html";
-  } else {
-    alert("❌ Failed to send order.");
-  }
+if (response.ok) {
+  window.location.href = "thankyou-index.html";
+} else {
+  alert("❌ Failed to send order.");
+}
 });
 
   
